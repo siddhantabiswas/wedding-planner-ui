@@ -1,0 +1,91 @@
+/* --- Base Theme Styles --- */
+::ng-deep .p-menubar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+::ng-deep .p-menubar .p-menubar-root-list {
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  background: transparent;
+  gap: 0.1rem;
+}
+
+::ng-deep .p-menubar .p-menubar-submenu {
+  background-color: #fdfbf7 !important;
+  border: 1px solid #e7e5e4 !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05) !important;
+  border-radius: 0.75rem !important;
+  padding: 0.5rem !important;
+}
+
+/* --- Mobile Flex Reordering (Applied by default, overridden on desktop) --- */
+
+/* 1. Mobile Hamburger Button: Extreme Left */
+::ng-deep .p-menubar .p-menubar-button {
+  order: 1 !important;
+  margin-right: 0.75rem !important;
+  margin-left: 0 !important;
+}
+
+/* 2. Brand Logo: Right after Hamburger */
+::ng-deep .p-menubar .p-menubar-start {
+  order: 2 !important;
+  margin-right: auto !important; /* Pushes everything else to the far right */
+}
+
+/* 3. Mobile Dropdown Menu Container */
+::ng-deep .p-menubar .p-menubar-root-list {
+  order: 3 !important;
+}
+
+/* 4. Action CTA Button: Extreme Right */
+::ng-deep .p-menubar .p-menubar-end {
+  order: 4 !important;
+  margin-left: auto !important;
+}
+
+/* --- Desktop Layout Restorations (960px and up) --- */
+@media screen and (min-width: 960px) {
+  ::ng-deep .p-menubar .p-menubar-start {
+    order: 1 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Pins the list item elements cleanly to the far right side of the screen */
+  ::ng-deep .p-menubar .p-menubar-root-list {
+    order: 2 !important;
+    margin-left: auto !important; /* Pushes the container away from the logo over to the right edge */
+  }
+
+  ::ng-deep .p-menubar .p-menubar-end {
+    order: 3 !important;
+    margin-left: 2rem !important;
+  }
+}
+
+/* --- Tablet Layout Restorations (960px and up) --- */
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* Pins the list item elements cleanly to the far right side of the screen */
+  ::ng-deep .p-menubar .p-menubar-root-list {
+    order: 2 !important;
+    margin-left: auto !important; /* Pushes the container away from the logo over to the right edge */
+    margin-right: 0 !important;
+    width: 100%;
+    justify-content: end;
+  }
+}
+
+/* --- Mobile Layout Restorations (960px and up) --- */
+@media screen and (max-width: 767px) {
+  /* 2. Brand Logo: Right after Hamburger */
+  ::ng-deep .p-menubar .p-menubar-start {
+    order: 2 !important;
+    margin-right: auto !important; /* Pushes everything else to the far right */
+    width: 100%;
+    justify-content: center;
+  }
+}

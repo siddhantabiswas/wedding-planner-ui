@@ -1,0 +1,55 @@
+/* Clean out previous ::ng-deep button hacks. We only need basic padding adjustments now */
+::ng-deep .p-carousel-indicators {
+  margin-top: 1rem !important;
+}
+
+/* 1. Make the main internal content container relative so it holds our overlays */
+::ng-deep .faded-edge-carousel .p-carousel-content {
+  position: relative !important;
+}
+
+/* 2. Inject Left and Right fade layers directly on top of the carousel track elements */
+::ng-deep .faded-edge-carousel .p-carousel-content::before,
+::ng-deep .faded-edge-carousel .p-carousel-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 24rem; /* Width of the fade effect */
+  z-index: 5;
+  pointer-events: none; /* Allows arrows and cards underneath to remain clickable */
+
+  backdrop-filter: blur(3px);
+
+  /* Modern CSS masking to gracefully fade out the blur strength */
+}
+
+/* Left overlay gradient */
+::ng-deep .faded-edge-carousel .p-carousel-content::before {
+  left: 0;
+  background: linear-gradient(to right, var(--p-surface-0, #fff) 10%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 20%, transparent 100%);
+  mask-image: linear-gradient(to right, black 20%, transparent 100%);
+}
+
+/* Right overlay gradient */
+::ng-deep .faded-edge-carousel .p-carousel-content::after {
+  right: 0;
+  background: linear-gradient(to left, var(--p-surface-0, #fff) 10%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, black 20%, transparent 100%);
+  mask-image: linear-gradient(to left, black 20%, transparent 100%);
+}
+
+/* 3. Dark mode compatibility overrides */
+@media (prefers-color-scheme: dark) {
+  ::ng-deep .faded-edge-carousel .p-carousel-content::before {
+    background: linear-gradient(to right, var(--p-surface-900, #111827) 15%, transparent 100%);
+  }
+  ::ng-deep .faded-edge-carousel .p-carousel-content::after {
+    background: linear-gradient(to left, var(--p-surface-900, #111827) 15%, transparent 100%);
+  }
+}
+
+:host ::ng-deep p-button {
+  display: none;
+}

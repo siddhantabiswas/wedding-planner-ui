@@ -1,0 +1,60 @@
+<app-page-header [title]="'Portfolio'" [subtitle]="'Beautiful, free images gifted by the world’s most generous community of photographers.'"></app-page-header>
+
+<div class="max-w-[1600px] mx-auto p-4">
+  
+  <div class="columns-1 sm:columns-2 lg:columns-2 xl:columns-3 gap-6 space-y-6 [column-fill:balance]">
+    
+    @for (photo of sortedPhotos(); track photo.id) {
+      <div class="break-inside-avoid relative group overflow-hidden rounded-xl bg-surface-100 dark:bg-surface-800 transition-all duration-300 hover:shadow-lg">
+        
+        <div pRipple class="cursor-zoom-in relative block">
+          
+          <img 
+            [src]="photo.url" 
+            [alt]="photo.alt" 
+            class="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-[1.01]"
+            loading="lazy"
+          />
+
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6 pointer-events-none">
+            
+            <div class="flex justify-end gap-3 pointer-events-auto">
+              <p-button 
+                icon="pi pi-heart-fill" 
+                [rounded]="true" 
+                severity="secondary"
+                styleClass="w-10 h-10 text-red-500 bg-white/90 hover:bg-white border-none shadow-sm"
+              />
+              <p-button 
+                icon="pi pi-plus" 
+                [rounded]="true" 
+                severity="secondary"
+                styleClass="w-10 h-10 text-surface-700 bg-white/90 hover:bg-white border-none shadow-sm"
+              />
+            </div>
+
+            <div class="flex items-center justify-between pointer-events-auto">
+              <div class="flex items-center gap-3 text-white">
+                <div class="w-9 h-9 rounded-full bg-surface-300 overflow-hidden border border-white/20">
+                  <img [src]="photo.authorAvatar" class="w-full h-full object-cover" alt="Author">
+                </div>
+                <span class="text-sm font-medium truncate max-w-[160px]">{{ photo.author }}</span>
+              </div>
+              
+              <p-button 
+                icon="pi pi-download" 
+                [rounded]="true" 
+                severity="secondary"
+                styleClass="w-9 h-9 text-surface-700 bg-white/90 hover:bg-white border-none shadow-sm"
+                (onClick)="$event.stopPropagation(); downloadImage(photo.url)"
+              />
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    }
+
+  </div>
+</div>

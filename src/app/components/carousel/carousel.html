@@ -1,0 +1,74 @@
+<div class="card overflow-hidden ">
+  <!-- Added styleClass to target this specific instance in the CSS safely -->
+  <p-carousel
+    #pc
+    [value]="items()"
+    [numVisible]="3"
+    [numScroll]="1"
+    [responsiveOptions]="responsiveOptions"
+    [page]="currentPage"
+    (onPage)="currentPage = $event.page ?? 0"
+    class="faded-edge-carousel"
+  >
+    <ng-template let-item #item>
+      <div
+        class="my-5 pb-5 lg:mx-2 xl:mx-4 rounded-3xl flex flex-col justify-between h-full bg-surface-0 dark:bg-surface-900 transition-all duration-500 ease-in-out transform origin-center"
+        [style.transform]="isCenterCard(item) ? 'scale(1.06)' : 'scale(0.92)'"
+        [style.zIndex]="isCenterCard(item) ? '10' : '1'"
+        
+      >
+        <div class="m-0">
+          <div class="relative mx-auto">
+            <img [src]="item.imageUrl" [alt]="item.title" class="w-full rounded-3xl object-cover" />
+            @if (isCenterCard(item)) {
+              <span
+                class="absolute bottom-6 left-1/2 transform -translate-x-1/2 font-semibold text-xl text-slate-300 px-1"
+              >
+                {{ item.title }}
+              </span>
+            }
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+
+  <!-- Custom Navigation Buttons Below the Carousel Container -->
+  <div class="flex justify-center items-center gap-4 mt-6 z-30 relative">
+    <!-- Left Button -->
+    <button
+      (click)="pc.navBackward($event)"
+      class="w-12 h-12 rounded-full border border-slate-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-800 flex items-center justify-center text-surface-900 dark:text-surface-50 shadow-md hover:scale-110 active:scale-95 transition-all duration-200"
+      aria-label="Previous slide"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-5 h-5"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </button>
+
+    <!-- Right Button -->
+    <button
+      (click)="pc.navForward($event)"
+      class="w-12 h-12 rounded-full border border-slate-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-800 flex items-center justify-center text-surface-900 dark:text-surface-50 shadow-md hover:scale-110 active:scale-95 transition-all duration-200"
+      aria-label="Next slide"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-5 h-5"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+  </div>
+</div>

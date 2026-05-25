@@ -1,0 +1,59 @@
+/* 1. Spin the entire group together */
+#sparkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spinGroup 20s linear infinite;
+}
+
+/* 2. Base twinkle animation for every individual sparkle element */
+#sparkle path {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: randomTwinkle 2s ease-in-out infinite;
+}
+
+/* 3. Stagger the delays and durations to create a random, organic rhythm */
+#sparkle path:nth-child(2n) {
+  animation-delay: 0.4s;
+  animation-duration: 1.5s;
+}
+
+#sparkle path:nth-child(3n) {
+  animation-delay: 0.9s;
+  animation-duration: 2.3s;
+}
+
+#sparkle path:nth-child(4n) {
+  animation-delay: 1.4s;
+  animation-duration: 1.8s;
+}
+
+#sparkle path:nth-child(5n) {
+  animation-delay: 0.2s;
+  animation-duration: 2.7s;
+}
+
+/* --- Animation Keyframes --- */
+
+/* Smooth, continuous rotation for the entire group */
+@keyframes spinGroup {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Individual elements scaling and fading out of sync */
+@keyframes randomTwinkle {
+  0%,
+  100% {
+    opacity: 0.1;
+    /* transform: scale(0.5); */
+  }
+  50% {
+    opacity: 1;
+    /* transform: scale(1.2); */
+  }
+}

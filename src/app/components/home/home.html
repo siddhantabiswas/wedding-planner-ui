@@ -1,0 +1,151 @@
+<app-hero></app-hero>
+
+<!-- GET STARTED -->
+<p-card class="md:w-[90%] lg:w-[90%] xl:w-[80%] mx-auto">
+  <h1 class="px-4 text-5xl text-center mx-auto leading-tight">
+    First Step Towards your Dream Wedding
+  </h1>
+  <p class="px-4 mt-6 text-center mx-auto max-w-2xl">
+    Discover the world’s most popular vacation spots, from tropical beaches to vibrant cityscapes,
+    perfect for creating unforgettable memories
+  </p>
+
+  <div class="flex flex-col md:flex-row items-center mt-10 gap-2">
+    <div class="w-full md:flex-1">
+      <p-inputgroup class="w-full">
+        <p-inputgroup-addon>
+          <i class="pi pi-map text-brand-primary"></i>
+        </p-inputgroup-addon>
+        <p-select
+          [options]="cities"
+          [(ngModel)]="selectedCity"
+          optionLabel="name"
+          placeholder="Select a City"
+          class="w-full"
+        ></p-select>
+      </p-inputgroup>
+    </div>
+
+    <div class="w-full md:flex-1">
+      <p-inputgroup class="w-full">
+        <p-inputgroup-addon>
+          <i class="pi pi-briefcase text-brand-primary"></i>
+        </p-inputgroup-addon>
+        <p-select
+          [options]="services"
+          [(ngModel)]="selectedService"
+          optionLabel="name"
+          placeholder="Select a Service"
+          class="w-full"
+        ></p-select>
+      </p-inputgroup>
+    </div>
+
+    <div class="flex-none">
+      <p-button
+        label="Get Started"
+        icon="pi pi-search"
+        (onClick)="onSubmit()"
+        class="whitespace-nowrap w-full"
+      ></p-button>
+    </div>
+  </div>
+</p-card>
+
+<p-divider align="center" type="dotted">
+  <img src="images/garland.png" />
+</p-divider>
+
+<!-- SERVICES -->
+<p-card class="xl:w-[80%] mx-auto !border-none !shadow-none !bg-transparent">
+  <h1 class="px-4 text-5xl text-center mx-auto leading-tight">Our Services</h1>
+  <p class="px-4 mt-6 mb-10 text-center mx-auto max-w-2xl">
+    Discover the world’s most popular vacation spots, from tropical beaches to vibrant cityscapes,
+    perfect for creating unforgettable memories
+  </p>
+
+  @if (responsive.isLG() || responsive.isXL()) {
+    <app-carousel [items]="items"></app-carousel>
+  } @else {
+    <app-services [isHome]="true"></app-services>
+  }
+</p-card>
+
+<p-divider align="center" type="dotted">
+  <img src="images/garland.png" />
+</p-divider>
+
+<!-- PROCESS -->
+<p-card class="md:w-[90%] lg:w-[90%] xl:w-[80%] mx-auto !border-none !shadow-none !bg-transparent">
+  <h1 class="px-4 text-5xl text-center mx-auto leading-tight">How We Work</h1>
+  <p class="px-4 mt-6 mb-10 text-center mx-auto max-w-2xl">
+    Discover the world’s most popular vacation spots, from tropical beaches to vibrant cityscapes,
+    perfect for creating unforgettable memories
+  </p>
+
+  <div class="bg-surface-0 dark:bg-surface-950 text-center">
+    <div class="flex flex-col gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="w-full rounded-md p-4">
+                <span class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-surface-0 dark:bg-surface-800 shadow mx-auto">
+                    <i class="pi pi-phone text-brand-primary"></i>
+                </span>
+                <div class="flex flex-col gap-1">
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-medium leading-tight">1. We Communicate</div>
+                    <p class="text-surface-500 dark:text-surface-400 leading-normal">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </div>
+            </div>
+            <div class="w-full rounded-md p-4">
+                <span class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-surface-0 dark:bg-surface-800 shadow mx-auto">
+                    <i class="pi pi-sparkles text-brand-primary"></i>
+                </span>
+                <div class="flex flex-col gap-1">
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-medium leading-tight">2. We Brainstorm and Plan</div>
+                    <p class="text-surface-500 dark:text-surface-400 leading-normal">Risus nec feugiat in fermentum posuere urna nec. Posuere sollicitudin aliquam ultrices sagittis.</p>
+                </div>
+            </div>
+            <div class="w-full rounded-md p-4">
+                <span class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-surface-0 dark:bg-surface-800 shadow mx-auto">
+                    <i class="pi pi-desktop text-brand-primary"></i>
+                </span>
+                <div class="flex flex-col gap-1">
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-medium leading-tight">3. We Present</div>
+                    <p class="text-surface-500 dark:text-surface-400 leading-normal">Ornare suspendisse sed nisi lacus sed viverra tellus. Neque volutpat ac tincidunt vitae semper.</p>
+                </div>
+            </div>
+            <div class="w-full rounded-md p-4">
+                <span class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-surface-0 dark:bg-surface-800 shadow mx-auto">
+                    <i class="pi pi-sync text-brand-primary"></i>
+                </span>
+                <div class="flex flex-col gap-1">
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-medium leading-tight">4. We Revise</div>
+                    <p class="text-surface-500 dark:text-surface-400 leading-normal">Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum tellus.</p>
+                </div>
+            </div>
+            <div class="w-full rounded-md p-4">
+                <span class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-surface-0 dark:bg-surface-800 shadow mx-auto">
+                    <i class="pi pi-thumbs-up text-brand-primary"></i>
+                </span>
+                <div class="flex flex-col gap-1">
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-medium leading-tight">5. We Finalize</div>
+                    <p class="text-surface-500 dark:text-surface-400 leading-normal">Nec tincidunt praesent semper feugiat. Sed adipiscing diam donec adipiscing tristique risus nec feugiat.</p>
+                </div>
+            </div>
+            <div class="w-full rounded-md p-4">
+                <span class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-surface-0 dark:bg-surface-800 shadow mx-auto">
+                    <i class="pi pi-flag text-brand-primary"></i>
+                </span>
+                <div class="flex flex-col gap-1">
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-medium leading-tight">6. We Execute</div>
+                    <p class="text-surface-500 dark:text-surface-400 leading-normal">Mattis rhoncus urna neque viverra justo nec ultrices. Id cursus metus aliquam eleifend.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</p-card>
+
+<!-- <p-divider align="center" type="dotted">
+  <img src="images/garland.png" />
+</p-divider> -->

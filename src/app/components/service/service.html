@@ -1,0 +1,35 @@
+<div class="p-3 xs:p-0 sm:p-1 flex items-center justify-center">
+  <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+    <ng-template #header>
+      <img alt="Card" class="w-full aspect-[5/4] object-cover" src="{{ imageUrl() }}" />
+    </ng-template>
+    <ng-template #title> {{ cardTitle() }} </ng-template>
+    <ng-template #subtitle> {{ cardSubtitle() }} </ng-template>
+    <p class="text-surface-600 dark:text-surface-400 text-sm leading-relaxed">
+      {{ visibleDescription() }}
+
+      @if (isLongText()) {
+        <br />
+        <button
+          type="button"
+          (click)="toggleExpand()"
+          class="text-primary hover:underline font-semibold cursor-pointer focus:outline-none inline-block bg-transparent border-none p-0"
+        >
+          {{ isExpanded() ? 'Read Less' : 'Read More' }}
+        </button>
+      }
+    </p>
+    <ng-template #footer>
+      @if (serviceUrl()) {
+        <div class="flex gap-4 mt-1">
+          <p-button
+            label="Know More"
+            class="w-full"
+            styleClass="w-full"
+            [routerLink]="serviceUrl()"
+          />
+        </div>
+      }
+    </ng-template>
+  </p-card>
+</div>

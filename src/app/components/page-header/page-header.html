@@ -1,0 +1,14 @@
+<div class="flex flex-col gap-4 items-center justify-center mb-12 px-6 py-16 md:px-12 lg:px-20">
+  @if (title()) {
+    <div
+      class="text-surface-900 dark:text-surface-0 font-bold text-4xl lg:text-5xl text-center leading-tight"
+    >
+      {{ title() }}
+    </div>
+  }
+  @if (subtitle()) {
+    <div class="text-surface-500 dark:text-surface-400 text-lg text-center leading-normal">
+      {{ subtitle() }}
+    </div>
+  }
+</div>

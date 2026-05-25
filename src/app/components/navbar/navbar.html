@@ -1,0 +1,77 @@
+<!-- Glassmorphic Global Sticky Container -->
+<div class="fixed top-0 z-50 w-full backdrop-blur-md bg-[#fcfce8]/30 border-b border-gray-100 shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- Menubar Integration -->
+    <p-menubar
+      [model]="menuItems"
+      [style]="{ border: 'none', background: 'transparent', 'box-shadow': 'none' }"
+    >
+      <!-- 1. LEFT TEMPLATE: Brand Typography -->
+      <ng-template #start>
+        <app-brand-logo></app-brand-logo>
+      </ng-template>
+
+      <!-- 2. CENTER TEMPLATE: Bespoke Link Interactions -->
+      <ng-template #item let-item let-root="root">
+        <div class="flex items-center ml-4 rounded-full">
+          <a
+            class="flex items-center p-3 hover:text-brand-primary cursor-pointer transition-colors duration-200"
+            [attr.target]="item.target"
+          >
+            <!-- Syncing decorative indicators -->
+            @if (item.icon) {
+              <i [class]="item.icon + ' text-sm mr-2 text-brand-primary'"></i>
+            }
+
+            <span class="font-sans font-medium text-sm">{{ item.label }}</span>
+
+            <!-- Dropdown indicator for parent tabs -->
+            @if (item.items) {
+              <i class="pi pi-angle-down text-xs ml-2 text-gray-400"></i>
+            }
+          </a>
+        </div>
+      </ng-template>
+
+      <!-- 3. RIGHT TEMPLATE: Primary Call-to-Action Element -->
+
+      <ng-template #end>
+        @if (responsive.isXL() || responsive.isLG() || responsive.isMD()) {
+          <p-button
+            label="Book Consultation"
+            icon="pi pi-calendar-plus"
+            styleClass="text-white px-5 py-2.5 rounded-full shadow-sm whitespace-nowrap"
+          />
+        } @else {
+          <p-button
+            icon="pi pi-calendar-plus"
+            [text]="true"
+            [rounded]="true"
+            styleClass="hover:text-brand-primary p-2"
+          />
+        }
+        @if (responsive.isXS()) {
+  <p>XS</p>
+}
+
+@else if (responsive.isSM()) {
+  <p>SM</p>
+}
+
+@else if (responsive.isMD()) {
+  <p>MD</p>
+}
+
+@else if (responsive.isLG()) {
+  <p>LG</p>
+}
+
+@else if (responsive.isXL()) {
+  <p>XL</p>
+}
+      </ng-template>
+    </p-menubar>
+  </div>
+</div>
+
+

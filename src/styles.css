@@ -1,3 +1,119 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+@import 'primeicons/primeicons.css';
+
+@theme {
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+}
+
+:root {
+  --xs-min: 0px;
+  --xs-max: 575.98px;
+  --sm-min: 576px;
+  --sm-max: 767.98px;
+  --md-min: 768px;
+  --md-max: 959.98px;
+  --lg-min: 960px;
+  --lg-max: 1279.98px;
+  --xl-min: 1280px;
+
+  --brand-primary: #800020;
+  --brand-primary-border: #8000203f;
+  --brand-secondary: #d4af37;
+
+  /* --p-button-primary-background: var(--brand-primary) !important;
+  --p-button-primary-border-color: none !important; */
+
+  --p-carousel-indicator-active-background: var(--brand-primary) !important;
+
+  --p-menubar-item-focus-background: none !important;
+
+  /* scroll-top button styling */
+  --p-scrolltop-background: var(--p-content-background);
+  --p-scrolltop-hover-background: var(--brand-primary);
+  
+}
+
+h1 {
+  font-family: 'Yesteryear', cursive;
+}
+
+html {
+  font-family: 'Josefin Sans', sans-serif;
+  font-optical-sizing: auto;
+}
+
+[class*='text-xl'],
+[class*='text-2xl'],
+[class*='text-3xl'] {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+}
+
+[class*='text-4xl'],
+[class*='text-5xl'],
+[class*='text-6xl'] {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 800;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: light-dark(var(--p-surface-0), var(--p-surface-950));
+}
+
+.wedding-heading {
+  font-family: 'Birthstone Bounce', cursive;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2.4rem;
+}
+
+/* .p-button-primary {
+  background: var(--brand-primary) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.p-button-secondary {
+  background: var(--brand-secondary) !important;
+  border: none !important;
+  color: white !important;
+} */
+
+.p-button {
+  background: none !important;
+  border: 1px solid var(--brand-primary-border) !important;
+  color: var(--brand-primary) !important;
+}
+
+.p-button:hover {
+  background: var(--brand-primary) !important;
+  border: 1px solid var(--brand-primary-border) !important;
+  color: white !important;
+}
+
+.p-button-secondary {
+  background: none !important;
+  border: 1px solid var(--p-surface-500) !important;
+  color: var(--p-surface-500) !important;
+}
+
+.p-scrolltop {
+  background: var(--p-scrolltop-background) !important;
+  border: 1px solid transparent !important;
+  --tw-shadow:
+    0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+    0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+    var(--tw-ring-shadow), var(--tw-shadow);
+}
